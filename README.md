@@ -20,7 +20,7 @@ O sistema permite **criar, listar e validar usuários**, com foco em **boas prá
 ## 📂 Estrutura do Projeto
 
 ```text
-Sistema de Cadastro/
+Sistema_de_Cadastro/
 │
 ├── Interface/
 │   └── __init__.py     # Menu e interação com o usuário
