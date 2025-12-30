@@ -9,7 +9,7 @@ init()
 def menu():
     while True:
         print(Fore.GREEN + "-" * 30)
-        print("MENU PRINCIPAL")
+        print(f"{"MENU PRINCIPAL".center(30)}")
         print("-" * 30 + Style.RESET_ALL)
         print("1 - Verificar arquivo")
         print("2 - Criar usuário")
@@ -20,7 +20,7 @@ def menu():
         try:
             opcao = int(input("Opção: "))
         except ValueError:
-            print("Digite um número válido.")
+            print("Digite uma opção válida.")
             continue
 
         if opcao == 1:
@@ -30,9 +30,9 @@ def menu():
             Servicos.cadastrar()
 
         elif opcao == 3:
-            print("-" * 40)
+            print("-" * 48)
             Servicos.listar()
-            print("-" * 40)
+            print("-" * 48)
 
         elif opcao == 4:
             limpar_terminal()

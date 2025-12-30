@@ -1,10 +1,26 @@
 import os
 
+import Interface
+
+
 def cadastrar():
     if os.path.exists("Dados.txt"):
 
         while True:
-            pessoa = input("Digite o nome da pessoa: ").strip().title()
+            opcao = input("Tem certeza que deseja adicionar um novo usuário?\n[S/N]: ").strip().upper()
+
+            if opcao == "S":
+                break
+
+            elif opcao == "N":
+                return
+
+            else:
+                print("Digite uma opção válida")
+                continue
+
+        while True:
+            pessoa = input("Digite o nome do usuário: ").strip().title()
 
             if not pessoa:
                 print("Nome não pode ser vazio.")
@@ -20,7 +36,7 @@ def cadastrar():
             try:
                 idade = int(input("Digite a idade: "))
 
-                if idade < 0 or idade > 120:
+                if idade < 1 or idade > 99:
                     print("Idade inválida!")
                     continue
                 break
@@ -33,23 +49,24 @@ def cadastrar():
 
         try:
             if consultar_usuario(pessoa):
-                print("Essa pessoa ja esta na lista!")
+                print("Esse usuário já está na lista!")
                 return
+
             else:
                 with open("Dados.txt", "a", encoding="utf-8") as arq:
-                    arq.write(f"{pessoa:<30}{idade:>2}" + "\n")
+                    arq.write(f"{pessoa:<40}{idade:>2}" + "\n")
 
         except FileNotFoundError:
-            print("Nao foi possivel encontrar o arquivo 'Dados.txt'")
+            print("Não foi possível encontrar o arquivo 'Dados.txt'")
 
         except Exception as erro:
-            print(f"Nao foi possivel registrar a pessoa\nERRO: {erro.__class__.__name__}")
+            print(f"Não foi possível registrar o usuário.\nERRO: {erro.__class__.__name__}")
 
         else:
-            print(f"{pessoa} foi criado com sucesso")
+            print(f"{pessoa} foi criado com sucesso!")
 
     else:
-        print("Nao foi possível encontrar o arquivo 'Dados.txt' no diretorio principal")
+        print("Não foi possível encontrar o arquivo 'Dados.txt' no diretório principal.")
 
 
 def consultar_usuario(entidade):

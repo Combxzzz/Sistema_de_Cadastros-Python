@@ -5,11 +5,11 @@ import time
 
 def verificar_arquivos():
     if os.path.exists('Dados.txt'):
-        print("Arquivo está presente no diretório principal.")
+        print("'Dados.txt' está presente no diretório principal.")
         time.sleep(1)
         return
 
-    print("Arquivo não foi encontrado no diretório principal!")
+    print("'Dados.txt' não foi encontrado no diretório principal!")
 
     while True:
         opcao = input("Deseja criar um novo?\n[S/N]: ").strip().upper()
@@ -17,9 +17,10 @@ def verificar_arquivos():
         if opcao == "S":
             criar_arquivos()
             return
+
         elif opcao == "N":
-            print("Saindo do programa")
-            sys.exit()
+            break
+
         else:
             print("Opção inválida...")
 
@@ -27,7 +28,7 @@ def verificar_arquivos():
 def criar_arquivos():
     try:
         with open('Dados.txt', 'w', encoding='utf-8') as arq:
-            arq.write(f"{'Nome':<30}{'Idade':>5}" + "\n"*2)
+            arq.write(f"{'Nome':<40}{'Idade':>5}" + "\n"*2)
 
     except OSError as e:
         print(f"Erro ao criar arquivo: {e.__class__.__name__}")
@@ -36,5 +37,5 @@ def criar_arquivos():
         print(f"Erro ao criar arquivo: {e.__class__.__name__}")
 
     else:
-        print("Arquivo criado com sucesso")
+        print("Arquivo criado com sucesso.")
 
